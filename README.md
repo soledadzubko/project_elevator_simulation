@@ -1,4 +1,6 @@
 Proyecto: Simulación de sistema de ascensores
+
+
 Descripción
 Este proyecto simula el funcionamiento de múltiples ascensores con un sistema en el que, una vez dentro del ascensor, los pasajeros seleccionan su destino mediante un panel de botones.
 
