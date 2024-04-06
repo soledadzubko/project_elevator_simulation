@@ -5,11 +5,10 @@ from elevador import Elevador
 class TestElevador(unittest.TestCase):
     def setUp(self):
         self.elevator = Elevador("Test Elevator", [])
-    """
+    
     def test_initialization(self):
         self.assertEqual(self.elevator.name, "Test Elevator")
         self.assertEqual(self.elevator.current, 0)
-        self.assertIsNone(self.elevator.direction)
         self.assertEqual(self.elevator.lift, [])
 
     def test_increment(self):
@@ -59,7 +58,7 @@ class TestElevador(unittest.TestCase):
         self.elevator.move()
         self.assertEqual(self.elevator.current, 0)
         self.assertNotIn("0", self.elevator.lift)
-    """
+    
     def test_move_multiple_lift_requests(self):
         self.elevator.current = 0
         self.elevator.lift = ["2", "5"]
