@@ -19,34 +19,37 @@ class Elevador:
     
     def move(self):
         while True:
-            if not self.lift:  # Si no hay solicitudes pendientes, detenerse
+            if not self.lift:  # If there are no pending requests, stop
                 break
 
-            # Obtener el próximo piso al que se debe mover el ascensor
+            # Get the next floor the elevator should move to
             next_floor = int(self.lift[0])
 
-            if self.current > next_floor:  # Mover hacia abajo si es necesario
+            if self.current > next_floor:  
                 self.decrement()
                 self.direction = "Down"
-            elif self.current < next_floor:  # Mover hacia arriba si es necesario
+            elif self.current < next_floor: 
                 self.increment()
                 self.direction = "Up"
-            else:  # Detenerse si se alcanza el piso deseado
+            else:  # Stop if desired floor is reached
                 print(f"{self.name}, STOP =>: ", self.current)
                 self.lift.remove(str(self.current))
                 break
-    
+    """
+    The elevator that is closest is assigned
+    Preference is taken to upload (Up)
+    """
     def assign_elevator(selft, floor, elevators):
         floor = int(floor)
         closest_elevator = None
         min_distance = float('inf')
 
         for elevator in elevators:  
-            print("mindistance:", min_distance)
-            print("elevador:", elevator.name, ", ", elevator.direction)
+            #print("mindistance:", min_distance)
+            #print("elevador:", elevator.name, ", ", elevator.direction)
 
             if elevator.direction == "Down"  and floor >= int(elevator.current):
-                print("up ", floor, " < ", elevator.current)
+                #print("up ", floor, " < ", elevator.current)
                 distance = abs(floor - elevator.current )
                 if distance <= min_distance:
                     min_distance = distance
@@ -68,5 +71,5 @@ class Elevador:
                     min_distance = distance
                     closest_elevator = elevator
 
-        print("closest elevator:", closest_elevator.name)
+        #print("closest elevator:", closest_elevator.name)
         return closest_elevator

@@ -3,18 +3,25 @@ import time
 import elevador
 lift = [] #store user requests to get on or off the elevator
 NUM_ELEVATORS = 2 
-
+exit_program = False
 
 def get_input():
+    global exit_program
     input1 = input()
-    lift.append(input1)
+
+    if input1.lower() == "x":
+            exit_program = True
+            print("Exiting the program...")
+            
+    elif input1.isdigit():
+        lift.append(input1)
 
 elevators = [elevador.Elevador(f"E_{i}", lift) for i in range(NUM_ELEVATORS)]
 elevators[0].current = 3 #change the initial floor of an elevator
 
 if __name__ == '__main__':
     print("Enter floor numbers: ", end="")
-    while(True):
+    while not exit_program:
         t1= threading.Thread(target=get_input, name='t1')
     
         threads = []
